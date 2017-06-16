@@ -1,7 +1,5 @@
 package com.processmining.dao;
 
-import java.util.List;
-
 import com.processmining.entity.EventLog;
 
 public interface EventLogMapper {
@@ -12,8 +10,6 @@ public interface EventLogMapper {
     int insertSelective(EventLog record);
 
     EventLog selectByPrimaryKey(Integer id);
-    
-    List<EventLog> selectByName(String name);				// 模糊搜索
 
     int updateByPrimaryKeySelective(EventLog record);
 

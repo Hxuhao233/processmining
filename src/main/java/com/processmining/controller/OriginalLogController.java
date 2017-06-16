@@ -3,7 +3,7 @@ package com.processmining.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.processmining.service.IOriginalLogService;
+import com.processmining.service.IRawLogService;
 
 /**
  * 日志管理--原始日志功能控制器
@@ -15,7 +15,7 @@ import com.processmining.service.IOriginalLogService;
 public class OriginalLogController {
 	
 	@Autowired
-	private IOriginalLogService originalLogService; 
+	private IRawLogService originalLogService; 
 	
 	
 	

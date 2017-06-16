@@ -11,7 +11,7 @@ import com.processmining.util.HDFSUtil;
 public class HelloController {
 	
 	
-	//@Autowired
+	@Autowired
 	private HDFSUtil hdfsUtil;
 	
 	

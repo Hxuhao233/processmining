@@ -1,9 +1,7 @@
 package com.processmining.entity;
 
-import javax.persistence.Entity;
 import javax.persistence.Transient;
 
-@Entity
 public class User {
     private Integer id;
 
@@ -15,12 +13,23 @@ public class User {
 
     private Boolean activated;
 
-    private String nickname;
+    private Integer type;
 
-    private Boolean type;
+    private String nickname;
 
     @Transient
     private String checkcode;
+    
+    public User(){
+    	
+    }
+    
+    public User(String email,String password,String nickname){
+    	this.email = email;
+    	this.password = password;
+    	this.nickname = nickname;
+    }
+    
     
     public Integer getId() {
         return id;
@@ -62,20 +71,20 @@ public class User {
         this.activated = activated;
     }
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
     public String getNickname() {
         return nickname;
     }
 
     public void setNickname(String nickname) {
         this.nickname = nickname == null ? null : nickname.trim();
-    }
-
-    public Boolean getType() {
-        return type;
-    }
-
-    public void setType(Boolean type) {
-        this.type = type;
     }
 
 	public String getCheckcode() {
@@ -85,6 +94,7 @@ public class User {
 	public void setCheckcode(String checkcode) {
 		this.checkcode = checkcode;
 	}
+    
     
     
 }

@@ -4,22 +4,19 @@
   <resultMap id="BaseResultMap" type="com.processmining.entity.EventLog" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="hdfsId" property="hdfsid" jdbcType="VARCHAR" />
-    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="creatorId" property="creatorid" jdbcType="INTEGER" />
-    <result column="standardizedLogId" property="standardizedlogid" jdbcType="INTEGER" />
     <result column="format" property="format" jdbcType="VARCHAR" />
-    <result column="source1Id" property="source1id" jdbcType="INTEGER" />
-    <result column="source2Id" property="source2id" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="isMerged" property="ismerged" jdbcType="BIT" />
     <result column="controller" property="controller" jdbcType="VARCHAR" />
     <result column="totalInstanceNum" property="totalinstancenum" jdbcType="INTEGER" />
     <result column="totalEventNum" property="totaleventnum" jdbcType="INTEGER" />
     <result column="average" property="average" jdbcType="INTEGER" />
     <result column="processActivityEvent" property="processactivityevent" jdbcType="VARCHAR" />
+    <result column="isShared" property="isshared" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, hdfsId, createTime, creatorId, standardizedLogId, format, source1Id, source2Id, 
-    controller, totalInstanceNum, totalEventNum, average, processActivityEvent
+    id, name, format, createTime, isMerged, controller, totalInstanceNum, totalEventNum, 
+    average, processActivityEvent, isShared
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -32,16 +29,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.processmining.entity.EventLog" >
-    insert into eventlog (id, name, hdfsId, 
-      createTime, creatorId, standardizedLogId, 
-      format, source1Id, source2Id, 
-      controller, totalInstanceNum, totalEventNum, 
-      average, processActivityEvent)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{hdfsid,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{creatorid,jdbcType=INTEGER}, #{standardizedlogid,jdbcType=INTEGER}, 
-      #{format,jdbcType=VARCHAR}, #{source1id,jdbcType=INTEGER}, #{source2id,jdbcType=INTEGER}, 
-      #{controller,jdbcType=VARCHAR}, #{totalinstancenum,jdbcType=INTEGER}, #{totaleventnum,jdbcType=INTEGER}, 
-      #{average,jdbcType=INTEGER}, #{processactivityevent,jdbcType=VARCHAR})
+    insert into eventlog (id, name, format, 
+      createTime, isMerged, controller, 
+      totalInstanceNum, totalEventNum, average, 
+      processActivityEvent, isShared)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{format,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{ismerged,jdbcType=BIT}, #{controller,jdbcType=VARCHAR}, 
+      #{totalinstancenum,jdbcType=INTEGER}, #{totaleventnum,jdbcType=INTEGER}, #{average,jdbcType=INTEGER}, 
+      #{processactivityevent,jdbcType=VARCHAR}, #{isshared,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.processmining.entity.EventLog" >
     insert into eventlog
@@ -52,26 +47,14 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="hdfsid != null" >
-        hdfsId,
+      <if test="format != null" >
+        format,
       </if>
       <if test="createtime != null" >
         createTime,
       </if>
-      <if test="creatorid != null" >
-        creatorId,
-      </if>
-      <if test="standardizedlogid != null" >
-        standardizedLogId,
-      </if>
-      <if test="format != null" >
-        format,
-      </if>
-      <if test="source1id != null" >
-        source1Id,
-      </if>
-      <if test="source2id != null" >
-        source2Id,
+      <if test="ismerged != null" >
+        isMerged,
       </if>
       <if test="controller != null" >
         controller,
@@ -88,6 +71,9 @@
       <if test="processactivityevent != null" >
         processActivityEvent,
       </if>
+      <if test="isshared != null" >
+        isShared,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -96,26 +82,14 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="hdfsid != null" >
-        #{hdfsid,jdbcType=VARCHAR},
+      <if test="format != null" >
+        #{format,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="creatorid != null" >
-        #{creatorid,jdbcType=INTEGER},
-      </if>
-      <if test="standardizedlogid != null" >
-        #{standardizedlogid,jdbcType=INTEGER},
-      </if>
-      <if test="format != null" >
-        #{format,jdbcType=VARCHAR},
-      </if>
-      <if test="source1id != null" >
-        #{source1id,jdbcType=INTEGER},
-      </if>
-      <if test="source2id != null" >
-        #{source2id,jdbcType=INTEGER},
+      <if test="ismerged != null" >
+        #{ismerged,jdbcType=BIT},
       </if>
       <if test="controller != null" >
         #{controller,jdbcType=VARCHAR},
@@ -132,6 +106,9 @@
       <if test="processactivityevent != null" >
         #{processactivityevent,jdbcType=VARCHAR},
       </if>
+      <if test="isshared != null" >
+        #{isshared,jdbcType=BIT},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.processmining.entity.EventLog" >
@@ -140,26 +117,14 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="hdfsid != null" >
-        hdfsId = #{hdfsid,jdbcType=VARCHAR},
+      <if test="format != null" >
+        format = #{format,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="creatorid != null" >
-        creatorId = #{creatorid,jdbcType=INTEGER},
-      </if>
-      <if test="standardizedlogid != null" >
-        standardizedLogId = #{standardizedlogid,jdbcType=INTEGER},
-      </if>
-      <if test="format != null" >
-        format = #{format,jdbcType=VARCHAR},
-      </if>
-      <if test="source1id != null" >
-        source1Id = #{source1id,jdbcType=INTEGER},
-      </if>
-      <if test="source2id != null" >
-        source2Id = #{source2id,jdbcType=INTEGER},
+      <if test="ismerged != null" >
+        isMerged = #{ismerged,jdbcType=BIT},
       </if>
       <if test="controller != null" >
         controller = #{controller,jdbcType=VARCHAR},
@@ -176,24 +141,24 @@
       <if test="processactivityevent != null" >
         processActivityEvent = #{processactivityevent,jdbcType=VARCHAR},
       </if>
+      <if test="isshared != null" >
+        isShared = #{isshared,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.processmining.entity.EventLog" >
     update eventlog
     set name = #{name,jdbcType=VARCHAR},
-      hdfsId = #{hdfsid,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
-      creatorId = #{creatorid,jdbcType=INTEGER},
-      standardizedLogId = #{standardizedlogid,jdbcType=INTEGER},
       format = #{format,jdbcType=VARCHAR},
-      source1Id = #{source1id,jdbcType=INTEGER},
-      source2Id = #{source2id,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      isMerged = #{ismerged,jdbcType=BIT},
       controller = #{controller,jdbcType=VARCHAR},
       totalInstanceNum = #{totalinstancenum,jdbcType=INTEGER},
       totalEventNum = #{totaleventnum,jdbcType=INTEGER},
       average = #{average,jdbcType=INTEGER},
-      processActivityEvent = #{processactivityevent,jdbcType=VARCHAR}
+      processActivityEvent = #{processactivityevent,jdbcType=VARCHAR},
+      isShared = #{isshared,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

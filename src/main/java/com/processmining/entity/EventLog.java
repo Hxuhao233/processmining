@@ -7,19 +7,11 @@ public class EventLog {
 
     private String name;
 
-    private String hdfsid;
+    private String format;
 
     private Date createtime;
 
-    private Integer creatorid;
-
-    private Integer standardizedlogid;
-
-    private String format;
-
-    private Integer source1id;
-
-    private Integer source2id;
+    private Boolean ismerged;
 
     private String controller;
 
@@ -30,6 +22,8 @@ public class EventLog {
     private Integer average;
 
     private String processactivityevent;
+
+    private Boolean isshared;
 
     public Integer getId() {
         return id;
@@ -47,12 +41,12 @@ public class EventLog {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getHdfsid() {
-        return hdfsid;
+    public String getFormat() {
+        return format;
     }
 
-    public void setHdfsid(String hdfsid) {
-        this.hdfsid = hdfsid == null ? null : hdfsid.trim();
+    public void setFormat(String format) {
+        this.format = format == null ? null : format.trim();
     }
 
     public Date getCreatetime() {
@@ -63,44 +57,12 @@ public class EventLog {
         this.createtime = createtime;
     }
 
-    public Integer getCreatorid() {
-        return creatorid;
+    public Boolean getIsmerged() {
+        return ismerged;
     }
 
-    public void setCreatorid(Integer creatorid) {
-        this.creatorid = creatorid;
-    }
-
-    public Integer getStandardizedlogid() {
-        return standardizedlogid;
-    }
-
-    public void setStandardizedlogid(Integer standardizedlogid) {
-        this.standardizedlogid = standardizedlogid;
-    }
-
-    public String getFormat() {
-        return format;
-    }
-
-    public void setFormat(String format) {
-        this.format = format == null ? null : format.trim();
-    }
-
-    public Integer getSource1id() {
-        return source1id;
-    }
-
-    public void setSource1id(Integer source1id) {
-        this.source1id = source1id;
-    }
-
-    public Integer getSource2id() {
-        return source2id;
-    }
-
-    public void setSource2id(Integer source2id) {
-        this.source2id = source2id;
+    public void setIsmerged(Boolean ismerged) {
+        this.ismerged = ismerged;
     }
 
     public String getController() {
@@ -141,5 +103,13 @@ public class EventLog {
 
     public void setProcessactivityevent(String processactivityevent) {
         this.processactivityevent = processactivityevent == null ? null : processactivityevent.trim();
+    }
+
+    public Boolean getIsshared() {
+        return isshared;
+    }
+
+    public void setIsshared(Boolean isshared) {
+        this.isshared = isshared;
     }
 }

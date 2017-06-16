@@ -40,7 +40,7 @@ public class HDFSUtil{
         System.out.println("Time:"+ (System.currentTimeMillis() - start));  
           
         System.out.println("________________________Upload to " + dst + "________________________");  
-        fs.close(); 
+        //fs.close(); 
         
         getDirectoryFromHdfs(dst);  
     }  
@@ -65,7 +65,7 @@ public class HDFSUtil{
             System.out.println("_________________***********************____________________");  
             ret.append("_________________***********************____________________\n");
         }  
-        fs.close();  
+        //fs.close();  
         return ret.toString();
     }  
     
@@ -112,7 +112,7 @@ public class HDFSUtil{
         Path path = new Path(remote);    
         fs.copyToLocalFile(false,path, new Path(local));  
         System.out.println("download: from" + remote + " to " + local);  
-        fs.close();  
+        //fs.close();  
     }  
     
     
@@ -128,7 +128,7 @@ public class HDFSUtil{
     public boolean deleteFile(String remoteFilePath, boolean recursive)  
             throws IOException {  
         boolean result = fs.delete(new Path(remoteFilePath), recursive);  
-        fs.close();  
+        //fs.close();  
         return result;  
     }  
   

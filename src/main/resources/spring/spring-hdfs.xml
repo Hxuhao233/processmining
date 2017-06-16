@@ -13,7 +13,7 @@
 	
 	
 	<!-- 配置Configuration  -->
-	<!-- 
+	
 	<hadoop:configuration></hadoop:configuration>
 
 	<hadoop:file-system uri="hdfs://127.0.0.1:9000" user="hxuhao" id="fileSystem" />
@@ -21,5 +21,5 @@
 	<bean id="hdfsUtil" class="com.processmining.util.HDFSUtil">
 		<property name="fs" ref="fileSystem"/>
 	</bean>
- 	-->
+ 	
 </beans>

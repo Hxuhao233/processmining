@@ -7,11 +7,11 @@
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="banned" property="banned" jdbcType="BIT" />
     <result column="activated" property="activated" jdbcType="BIT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, email, password, banned, activated, nickname, type
+    id, email, password, banned, activated, type, nickname
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,28 +19,17 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByEmailAndPassword" resultMap="BaseResultMap" >
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where email = #{email,jdbcType=VARCHAR} and password = md5(#{password,jdbcType=VARCHAR})
-  </select>
-  <select id="selectByAll" resultMap="BaseResultMap"  >
-    select 
-    <include refid="Base_Column_List" />
-    from user
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.processmining.entity.User" useGeneratedKeys="true"  keyProperty="id">
+  <insert id="insert" parameterType="com.processmining.entity.User" >
     insert into user (id, email, password, 
-      banned, activated, nickname, 
-      type)
-    values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, md5(#{password,jdbcType=VARCHAR}), 
-      #{banned,jdbcType=BIT}, #{activated,jdbcType=BIT}, #{nickname,jdbcType=VARCHAR}, 
-      #{type,jdbcType=BIT})
+      banned, activated, type, nickname
+      )
+    values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{banned,jdbcType=BIT}, #{activated,jdbcType=BIT}, #{type,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.processmining.entity.User" useGeneratedKeys="true"  keyProperty="id">
     insert into user
@@ -60,11 +49,11 @@
       <if test="activated != null" >
         activated,
       </if>
-      <if test="nickname != null" >
-        nickname,
-      </if>
       <if test="type != null" >
         type,
+      </if>
+      <if test="nickname != null" >
+        nickname,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -75,7 +64,7 @@
         #{email,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
-        md5(#{password,jdbcType=VARCHAR}),
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="banned != null" >
         #{banned,jdbcType=BIT},
@@ -83,11 +72,11 @@
       <if test="activated != null" >
         #{activated,jdbcType=BIT},
       </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
       <if test="nickname != null" >
         #{nickname,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null" >
-        #{type,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -98,7 +87,7 @@
         email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
-        password = md5(#{password,jdbcType=VARCHAR}),
+        password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="banned != null" >
         banned = #{banned,jdbcType=BIT},
@@ -106,11 +95,11 @@
       <if test="activated != null" >
         activated = #{activated,jdbcType=BIT},
       </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
       <if test="nickname != null" >
         nickname = #{nickname,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null" >
-        type = #{type,jdbcType=BIT},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -118,11 +107,11 @@
   <update id="updateByPrimaryKey" parameterType="com.processmining.entity.User" >
     update user
     set email = #{email,jdbcType=VARCHAR},
-      password = md5(#{password,jdbcType=VARCHAR}),
+      password = #{password,jdbcType=VARCHAR},
       banned = #{banned,jdbcType=BIT},
       activated = #{activated,jdbcType=BIT},
-      nickname = #{nickname,jdbcType=VARCHAR},
-      type = #{type,jdbcType=BIT}
+      type = #{type,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

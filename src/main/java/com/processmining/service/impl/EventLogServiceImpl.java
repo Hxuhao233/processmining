@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.processmining.entity.EventLog;
-import com.processmining.entity.OriginalLog;
 import com.processmining.service.IEventLogService;
 
 /**
@@ -17,7 +16,7 @@ import com.processmining.service.IEventLogService;
 public class EventLogServiceImpl implements IEventLogService{
 
 	@Override
-	public List<OriginalLog> listAll() {
+	public List<EventLog> listAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
