@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.processmining.dao.MergeAlgoMapper;
-import com.processmining.dao.MergeAlgoParamMapper;
-import com.processmining.dao.MiningAlgoMapper;
-import com.processmining.dao.MiningAlgoParamMapper;
+import com.processmining.dao.AlgoMapper;
+import com.processmining.dao.AlgoParamMapper;
 import com.processmining.dao.UserMapper;
 import com.processmining.entity.User;
 import com.processmining.service.IManagerService;
@@ -28,16 +26,10 @@ public class ManagerServiceImpl implements IManagerService {
 	private UserMapper userDao;
 	
 	@Autowired
-	private MergeAlgoParamMapper mergeAlgoParamDao;
+	private AlgoMapper AlgoDao;
 	
 	@Autowired
-	private MergeAlgoMapper mergeAlgoDao;
-	
-	@Autowired
-	private MiningAlgoMapper miningAlgoDao;
-	
-	@Autowired
-	private MiningAlgoParamMapper miningAlgoParamDao;
+	private AlgoParamMapper AlgoParamDao;
 	
 	
 	

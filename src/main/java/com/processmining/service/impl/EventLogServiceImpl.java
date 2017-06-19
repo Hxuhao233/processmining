@@ -13,7 +13,6 @@ import com.processmining.dao.EventLogMapper;
 import com.processmining.dao.NormLogToEventLogMapper;
 import com.processmining.entity.EventLog;
 import com.processmining.service.IEventLogService;
-import com.processmining.service.SimpleHeuristicsNet;
 import com.processmining.util.fs.HDFSOperator;
 
 
@@ -78,12 +77,12 @@ public class EventLogServiceImpl implements IEventLogService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/*
 	@Override
 	public HeuristicsNet mining(XLog file, int miningAlogId, Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 	
 
 }

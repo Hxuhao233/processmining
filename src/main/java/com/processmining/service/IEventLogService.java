@@ -26,6 +26,7 @@ public interface IEventLogService {
 	 */
 	XLog merge(XLog file1,XLog file2,int mergeAlgoId,Map<String,Object> param);			
 	
+	
 	/**
 	 * 流程挖掘
 	 * @param file 				事件日志
@@ -33,8 +34,9 @@ public interface IEventLogService {
 	 * @param param		    	算法参数
 	 * @return
 	 */
+	/*
 	public HeuristicsNet mining(XLog file,int miningAlogId,Map<String,Object> param);
-	
+	*/
 	
 	/**
 	 * 上传
@@ -49,6 +51,7 @@ public interface IEventLogService {
 	 * @return	日志文件输出流
 	 */
 	public FileInputStream downloadEventLog(String name);
+	XLog merge(XLog file1, XLog file2);
 
 	
 	
