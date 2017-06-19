@@ -9,8 +9,9 @@ import com.processmining.entity.User;
  *
  */
 public interface IManagerService {
-	int banUser(int userId);
-	int unbanUser(int userId);
-	int deleteUser(int userId);
-	List<User> listAllUsers();
+	public int banUser(int userId);
+	public int unbanUser(int userId);
+	public int deleteUser(int userId);
+	public List<User> listAllUsers();
+	
 }

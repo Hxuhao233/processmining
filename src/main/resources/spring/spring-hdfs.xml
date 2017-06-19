@@ -16,9 +16,9 @@
 	
 	<hadoop:configuration></hadoop:configuration>
 
-	<hadoop:file-system uri="hdfs://127.0.0.1:9000" user="hxuhao" id="fileSystem" />
+	<hadoop:file-system uri="hdfs://127.0.0.1:9000" user="hxh12" id="fileSystem" />
 
-	<bean id="hdfsUtil" class="com.processmining.util.HDFSUtil">
+	<bean id="hdfsUtil" class="com.processmining.util.fs.HDFSOperator">
 		<property name="fs" ref="fileSystem"/>
 	</bean>
  	

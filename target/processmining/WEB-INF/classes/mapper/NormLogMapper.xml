@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.processmining.dao.NormLogMapper" >
+  <resultMap id="BaseResultMap" type="com.processmining.entity.NormLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="hdfsId" property="hdfsid" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="creatorId" property="creatorid" jdbcType="INTEGER" />
+    <result column="format" property="format" jdbcType="VARCHAR" />
+    <result column="isShared" property="isshared" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, hdfsId, createTime, creatorId, format, isShared
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from normalizedlog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from normalizedlog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.processmining.entity.NormLog" >
+    insert into normalizedlog (id, name, hdfsId, 
+      createTime, creatorId, format, 
+      isShared)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{hdfsid,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{creatorid,jdbcType=INTEGER}, #{format,jdbcType=VARCHAR}, 
+      #{isshared,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.processmining.entity.NormLog" >
+    insert into normalizedlog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="hdfsid != null" >
+        hdfsId,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="creatorid != null" >
+        creatorId,
+      </if>
+      <if test="format != null" >
+        format,
+      </if>
+      <if test="isshared != null" >
+        isShared,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hdfsid != null" >
+        #{hdfsid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorid != null" >
+        #{creatorid,jdbcType=INTEGER},
+      </if>
+      <if test="format != null" >
+        #{format,jdbcType=VARCHAR},
+      </if>
+      <if test="isshared != null" >
+        #{isshared,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.processmining.entity.NormLog" >
+    update normalizedlog
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hdfsid != null" >
+        hdfsId = #{hdfsid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorid != null" >
+        creatorId = #{creatorid,jdbcType=INTEGER},
+      </if>
+      <if test="format != null" >
+        format = #{format,jdbcType=VARCHAR},
+      </if>
+      <if test="isshared != null" >
+        isShared = #{isshared,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.processmining.entity.NormLog" >
+    update normalizedlog
+    set name = #{name,jdbcType=VARCHAR},
+      hdfsId = #{hdfsid,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      creatorId = #{creatorid,jdbcType=INTEGER},
+      format = #{format,jdbcType=VARCHAR},
+      isShared = #{isshared,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

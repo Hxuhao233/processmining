@@ -5,14 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.processmining.util.HDFSUtil;
+import com.processmining.util.fs.HDFSOperator;
 
 @Controller
 public class HelloController {
 	
 	
 	@Autowired
-	private HDFSUtil hdfsUtil;
+	private HDFSOperator hdfsUtil;
 	
 	
 	@RequestMapping("index")
