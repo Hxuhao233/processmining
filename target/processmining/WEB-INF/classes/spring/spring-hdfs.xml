@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:hadoop="http://www.springframework.org/schema/hadoop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/hadoop 
+	http://www.springframework.org/schema/hadoop/spring-hadoop.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	
+	<!-- 配置Configuration  -->
+	
+	<hadoop:configuration></hadoop:configuration>
+
+	<hadoop:file-system uri="hdfs://127.0.0.1:9000" user="hxuhao" id="fileSystem" />
+
+	<bean id="hdfsUtil" class="com.processmining.util.HDFSUtil">
+		<property name="fs" ref="fileSystem"/>
+	</bean>
+ 	
+</beans>

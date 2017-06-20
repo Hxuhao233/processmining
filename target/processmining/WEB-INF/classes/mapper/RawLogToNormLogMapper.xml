@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.processmining.dao.RawLogToNormLogMapper" >
+  <resultMap id="BaseResultMap" type="com.processmining.entity.RawLogToNormLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="rawLogId" property="rawlogid" jdbcType="INTEGER" />
+    <result column="normalizedLogId" property="normalizedlogid" jdbcType="INTEGER" />
+    <result column="rawLogName" property="rawlogname" jdbcType="VARCHAR" />
+    <result column="normalizedLogName" property="normalizedlogname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, rawLogId, normalizedLogId, rawLogName, normalizedLogName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rawlog__normalizedlog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rawlog__normalizedlog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.processmining.entity.RawLogToNormLog" >
+    insert into rawlog__normalizedlog (id, rawLogId, normalizedLogId, 
+      rawLogName, normalizedLogName)
+    values (#{id,jdbcType=INTEGER}, #{rawlogid,jdbcType=INTEGER}, #{normalizedlogid,jdbcType=INTEGER}, 
+      #{rawlogname,jdbcType=VARCHAR}, #{normalizedlogname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.processmining.entity.RawLogToNormLog" >
+    insert into rawlog__normalizedlog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rawlogid != null" >
+        rawLogId,
+      </if>
+      <if test="normalizedlogid != null" >
+        normalizedLogId,
+      </if>
+      <if test="rawlogname != null" >
+        rawLogName,
+      </if>
+      <if test="normalizedlogname != null" >
+        normalizedLogName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="rawlogid != null" >
+        #{rawlogid,jdbcType=INTEGER},
+      </if>
+      <if test="normalizedlogid != null" >
+        #{normalizedlogid,jdbcType=INTEGER},
+      </if>
+      <if test="rawlogname != null" >
+        #{rawlogname,jdbcType=VARCHAR},
+      </if>
+      <if test="normalizedlogname != null" >
+        #{normalizedlogname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.processmining.entity.RawLogToNormLog" >
+    update rawlog__normalizedlog
+    <set >
+      <if test="rawlogid != null" >
+        rawLogId = #{rawlogid,jdbcType=INTEGER},
+      </if>
+      <if test="normalizedlogid != null" >
+        normalizedLogId = #{normalizedlogid,jdbcType=INTEGER},
+      </if>
+      <if test="rawlogname != null" >
+        rawLogName = #{rawlogname,jdbcType=VARCHAR},
+      </if>
+      <if test="normalizedlogname != null" >
+        normalizedLogName = #{normalizedlogname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.processmining.entity.RawLogToNormLog" >
+    update rawlog__normalizedlog
+    set rawLogId = #{rawlogid,jdbcType=INTEGER},
+      normalizedLogId = #{normalizedlogid,jdbcType=INTEGER},
+      rawLogName = #{rawlogname,jdbcType=VARCHAR},
+      normalizedLogName = #{normalizedlogname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
