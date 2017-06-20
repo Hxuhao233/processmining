@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.processmining.dao.RawlogToEventLogMapper">
+  <resultMap id="BaseResultMap" type="com.processmining.entity.RawlogToEventLog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="rawlogid" jdbcType="INTEGER" property="rawlogid" />
+    <result column="eventlogid" jdbcType="INTEGER" property="eventlogid" />
+    <result column="rawlogname" jdbcType="VARCHAR" property="rawlogname" />
+    <result column="eventlogname" jdbcType="VARCHAR" property="eventlogname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, rawlogid, eventlogid, rawlogname, eventlogname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rawlog__eventlog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByRawLogId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rawlog__eventlog
+    where rawlogid = #{rawLogId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByEventLogId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rawlog__eventlog
+    where eventlogid = #{eventLogId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rawlog__eventlog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.processmining.entity.RawlogToEventLog">
+    insert into rawlog__eventlog (id, rawlogid, eventlogid, 
+      rawlogname, eventlogname)
+    values (#{id,jdbcType=INTEGER}, #{rawlogid,jdbcType=INTEGER}, #{eventlogid,jdbcType=INTEGER}, 
+      #{rawlogname,jdbcType=VARCHAR}, #{eventlogname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.processmining.entity.RawlogToEventLog">
+    insert into rawlog__eventlog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="rawlogid != null">
+        rawlogid,
+      </if>
+      <if test="eventlogid != null">
+        eventlogid,
+      </if>
+      <if test="rawlogname != null">
+        rawlogname,
+      </if>
+      <if test="eventlogname != null">
+        eventlogname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="rawlogid != null">
+        #{rawlogid,jdbcType=INTEGER},
+      </if>
+      <if test="eventlogid != null">
+        #{eventlogid,jdbcType=INTEGER},
+      </if>
+      <if test="rawlogname != null">
+        #{rawlogname,jdbcType=VARCHAR},
+      </if>
+      <if test="eventlogname != null">
+        #{eventlogname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.processmining.entity.RawlogToEventLog">
+    update rawlog__eventlog
+    <set>
+      <if test="rawlogid != null">
+        rawlogid = #{rawlogid,jdbcType=INTEGER},
+      </if>
+      <if test="eventlogid != null">
+        eventlogid = #{eventlogid,jdbcType=INTEGER},
+      </if>
+      <if test="rawlogname != null">
+        rawlogname = #{rawlogname,jdbcType=VARCHAR},
+      </if>
+      <if test="eventlogname != null">
+        eventlogname = #{eventlogname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.processmining.entity.RawlogToEventLog">
+    update rawlog__eventlog
+    set rawlogid = #{rawlogid,jdbcType=INTEGER},
+      eventlogid = #{eventlogid,jdbcType=INTEGER},
+      rawlogname = #{rawlogname,jdbcType=VARCHAR},
+      eventlogname = #{eventlogname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
