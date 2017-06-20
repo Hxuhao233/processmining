@@ -38,11 +38,13 @@ public interface IRawLogService extends ILogService{
 			String oriitemSeparator, String orinameValSeparator, String orinulVal, String targetitemSeparator,
 			String targetnameValSeparator, String targetnulVal);			
 	/**
-	 * 分页查询
+	 * 按日志名搜索原始日志 （分页）
 	 * @param pageNum	当前页数
 	 * @param pageSize	页面条数
+	 * @param info 日志名，若为空则返回整个列表
 	 * @return
 	 */
-	public PageInfo<RawLog> listAll(int pageNum,int pageSize);
+	public PageInfo<RawLog> searchByName(int pageNum,int pageSize,String info);
+	
 	
 }

@@ -24,6 +24,12 @@
     <include refid="Base_Column_List" />
     from rawlog
   </select>
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rawlog
+    where name REGEXP #{info,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from rawlog
     where id = #{id,jdbcType=INTEGER}

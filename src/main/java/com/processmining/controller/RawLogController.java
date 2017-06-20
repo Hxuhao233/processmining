@@ -187,11 +187,12 @@ public class RawLogController {
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseWithList<RawLog> selectAll(
-			@RequestParam(value="pageNum")int pageNum,
-			@RequestParam(value="pageSize")int pageSize){
+			@RequestParam(value="pageNum",defaultValue="1")int pageNum,
+			@RequestParam(value="pageSize",defaultValue="10")int pageSize,
+			@RequestParam(value="info",required=false) String info){
 				
 		ResponseWithList<RawLog> response = new ResponseWithList<>();
-		PageInfo<RawLog> logListWithPage = rawLogService.listAll(pageNum,pageSize);
+		PageInfo<RawLog> logListWithPage = rawLogService.searchByName(pageNum,pageSize,info);
 		response.setCode(Code.SUCCEED);
 		response.setData(logListWithPage);
 		return response;

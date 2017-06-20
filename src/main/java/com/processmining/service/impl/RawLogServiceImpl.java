@@ -37,8 +37,6 @@ import com.processmining.util.fs.HDFSOperator;
 public class RawLogServiceImpl implements IRawLogService{
 	
 
-
-
 	private static final String PATH_PREFIX = "/processmining/rawlog/";
 	
 	@Autowired
@@ -144,10 +142,15 @@ public class RawLogServiceImpl implements IRawLogService{
 	
 	
 	@Override
-	public PageInfo<RawLog> listAll(int pageNum, int pageSize) {
+	public PageInfo<RawLog> searchByName(int pageNum, int pageSize,String info) {
 		
 		PageHelper.startPage(pageNum,pageSize);
-		List<RawLog> logList = rawlogDao.selectAll();
+		List<RawLog> logList ;
+		if(info==null){
+			logList = rawlogDao.selectAll();
+		}else{
+			logList = rawlogDao.selectByName(info);
+		}
 		DateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
 		for(RawLog rawlog : logList){
 			// 查询上传者昵称
@@ -156,7 +159,6 @@ public class RawLogServiceImpl implements IRawLogService{
 			
 			// 时间对象转换字符串
 			rawlog.setCreateTime(format);
-			
 			
 			Integer rawLogId = rawlog.getId();
 			// 查询其对应的规范化日志
@@ -177,5 +179,7 @@ public class RawLogServiceImpl implements IRawLogService{
 		return logListWithPage;
 
 	}
+
+
 
 }

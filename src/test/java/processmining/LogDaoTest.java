@@ -21,7 +21,7 @@ public class LogDaoTest {
 		int pageNum = 1;
 		int pageSize = 10;
 
-		PageInfo<RawLog> logListWithPage = rawLogSerivce.listAll(pageNum,pageSize);
+		PageInfo<RawLog> logListWithPage = rawLogSerivce.searchByName(pageNum,pageSize,null);
 		for(RawLog record : logListWithPage.getList()){
 			System.out.println(record.getName());
 		}

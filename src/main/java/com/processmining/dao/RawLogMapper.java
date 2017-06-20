@@ -15,6 +15,8 @@ public interface RawLogMapper {
     RawLog selectByPrimaryKey(Integer id);
     
     List<RawLog> selectAll();
+    
+    List<RawLog> selectByName(String info);
 
     int updateByPrimaryKeySelective(RawLog record);
 
