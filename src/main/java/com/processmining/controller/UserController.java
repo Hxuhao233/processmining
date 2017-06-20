@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.processmining.entity.User;
-import com.processmining.service.IUserSerivce;
-import com.processmining.util.Code;
-import com.processmining.util.ResponseData;
+import com.processmining.service.IUserService;
+import com.processmining.util.response.Code;
+import com.processmining.util.response.ResponseData;
 
 @Controller
 @RequestMapping(value="user")
 public class UserController {
 	
 	@Autowired
-	private IUserSerivce userSerivce;
+	private IUserService userSerivce;
 	
 	
 	@ResponseBody
@@ -32,7 +32,7 @@ public class UserController {
 		System.out.println(user.getId());
 		
 		ResponseData responseData = new ResponseData();
-		responseData.setCode(Code.SUCCESS);
+		responseData.setCode(Code.SUCCEED);
 		
 		return responseData; 
 		

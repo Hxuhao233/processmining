@@ -1,24 +1,32 @@
 package processmining;
 
-import java.io.IOException;
+
+import java.io.File;
+import java.io.FileInputStream;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.processmining.entity.RawLog;
+import com.processmining.service.IRawLogService;
 import com.processmining.util.fs.HDFSOperator;
 
 
 public class HDFSTest {
-	public static void main(String[] args) throws IllegalArgumentException, IOException{
-		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("classpath:spring-hdfs.xml");
-		HDFSOperator hdfs = (HDFSOperator) ac.getBean("hdfsUtil");
-	
-
-		System.out.println(hdfs.exists("/processmining/eventlog"));
-		/*
-		System.out.println(hdfs.createDirectory("/pm/EventLog"));
-		System.out.println(hdfs.createDirectory("/pm/StandardizedLog"));
-		System.out.println(hdfs.createDirectory("/pm/OriginalLog"));
-		*/
+	public static void main(String[] args) throws Exception{
+		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("classpath:spring-*.xml");
+		IRawLogService logService = (IRawLogService) ac.getBean("rawLogServiceImpl");
+		for(int i=1;i<100;i++){
+			FileInputStream input = new FileInputStream(new File("F:\\log examples\\rawlog.txt"));
+			RawLog record = new RawLog();
+			record.setCreatorid(1);
+			record.setFormat("txt");
+			record.setIsshared(true);
+			record.setName("rawlog"+i+".txt");
+			logService.uploadLog(input, record);
+			Thread.sleep(1000);
+			input.close();
+		}
+		System.out.println("fin");
 		ac.close();
 	}
 }

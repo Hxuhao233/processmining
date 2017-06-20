@@ -1,5 +1,7 @@
 package com.processmining.dao;
 
+import java.util.List;
+
 import com.processmining.entity.RawLog;
 
 public interface RawLogMapper {
@@ -10,6 +12,8 @@ public interface RawLogMapper {
     int insertSelective(RawLog record);
 
     RawLog selectByPrimaryKey(Integer id);
+    
+    List<RawLog> selectAll();
 
     int updateByPrimaryKeySelective(RawLog record);
 

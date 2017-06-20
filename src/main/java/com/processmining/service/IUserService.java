@@ -7,7 +7,7 @@ import com.processmining.entity.User;
  * @author hxuhao
  *
  */
-public interface IUserSerivce {
+public interface IUserService {
 	public int register(User user);
 	public int login(User user);
 	public int updatePassword(User user);

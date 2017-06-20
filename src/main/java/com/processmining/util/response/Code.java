@@ -1,4 +1,4 @@
-package com.processmining.util;
+package com.processmining.util.response;
 
 /**
  * 服务端返回值状态码
@@ -8,7 +8,7 @@ package com.processmining.util;
 public interface Code {
 	
 	// 成功
-	int SUCCESS = 200;
+	int SUCCEED = 200;
 	
 	// 错误的邮箱或者密码
 	int WRONG_EMAIL_OR_PASSWORD = 300;
@@ -30,4 +30,7 @@ public interface Code {
 	
 	// 无权访问
 	int NOT_PERMISSION = 401;
+	
+	// 未知错误
+	int UNKNOWN_FAULT = 500;
 }

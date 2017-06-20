@@ -1,4 +1,4 @@
-package com.processmining.util;
+package com.processmining.util.response;
 
 public class ResponseData {
 	private int code;

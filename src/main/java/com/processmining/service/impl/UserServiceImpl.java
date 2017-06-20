@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.processmining.dao.UserMapper;
 import com.processmining.entity.User;
-import com.processmining.service.IUserSerivce;
+import com.processmining.service.IUserService;
 
 /**
  * 用户管理业务层实现
@@ -14,7 +14,7 @@ import com.processmining.service.IUserSerivce;
  */
 
 @Service
-public class UserSerivceImpl implements IUserSerivce{
+public class UserServiceImpl implements IUserService{
 	
 	@Autowired
 	private UserMapper userDao;
