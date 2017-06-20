@@ -10,6 +10,10 @@ public interface NormLogToEventLogMapper {
     int insertSelective(NormLogToEventLog record);
 
     NormLogToEventLog selectByPrimaryKey(Integer id);
+    
+    NormLogToEventLog selectByNormLogId(Integer NormLogId);
+    
+    NormLogToEventLog selectByEventLogId(Integer EventLogId);
 
     int updateByPrimaryKeySelective(NormLogToEventLog record);
 

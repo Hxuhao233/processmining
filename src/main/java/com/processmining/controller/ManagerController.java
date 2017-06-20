@@ -1,8 +1,11 @@
 package com.processmining.controller;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.databind.JavaType;
 
 import java.util.ArrayList;
+=======
+>>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+<<<<<<< HEAD
 import com.processmining.entity.User;
 import com.processmining.service.IManagerService;
 import com.processmining.util.Code;
@@ -18,6 +22,12 @@ import com.processmining.util.IdList;
 
 import com.processmining.util.ResponseData;
 import com.processmining.util.UserUtil;
+=======
+import com.processmining.service.IManagerService;
+import com.processmining.util.request.IdList;
+import com.processmining.util.response.Code;
+import com.processmining.util.response.ResponseData;
+>>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 
 /**
  * 管理员功能控制器
@@ -26,13 +36,18 @@ import com.processmining.util.UserUtil;
  */
 
 @Controller
+
 @RequestMapping("/manager")
+
+@RequestMapping(value="manager")
+
 public class ManagerController {
 	
 	@Autowired
 	private IManagerService managerService;
 	
 	@ResponseBody
+
 	@RequestMapping("/banUser")
 	public ResponseData banUser(@RequestBody IdList idlist){
 		List<Integer> list=idlist.getIdList();

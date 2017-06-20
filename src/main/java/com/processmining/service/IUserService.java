@@ -15,4 +15,5 @@ public interface IUserService {
 	public boolean activate(User user);
 	public User getUserById(Integer id);
 	public User getUserByEmailAndPassword(User user);
+
 }

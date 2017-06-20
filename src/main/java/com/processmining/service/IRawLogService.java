@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+import com.github.pagehelper.PageInfo;
+import com.processmining.entity.Log;
+>>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 import com.processmining.entity.RawLog;
 
 
@@ -13,12 +18,21 @@ import com.processmining.entity.RawLog;
  * @author hxuhao
  *
  */
+<<<<<<< HEAD
 public interface IRawLogService {
 	
 	public List<RawLog> listAll();
 	public int create(RawLog log);
 	public int delete(List<Integer> ologId);		// 允许批量删除
 	
+=======
+public interface IRawLogService extends ILogService{
+	/*
+	public List<Log> listAll();
+	public boolean create(Log log);
+	public boolean delete(Integer ologId);		// 允许批量删除
+	*/
+>>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 	/**
 	 * 规范化
 	 * @param path	文件名
@@ -36,6 +50,7 @@ public interface IRawLogService {
 	 */
 	public File convertToNormLog(String path,String id, String formats, String timeNames, String dataNames,
 			String oriitemSeparator, String orinameValSeparator, String orinulVal, String targetitemSeparator,
+<<<<<<< HEAD
 			String targetnameValSeparator, String targetnulVal);							
 	/**
 	 * 上传
@@ -50,5 +65,15 @@ public interface IRawLogService {
 	 * @return	日志文件输出流
 	 */
 	public FileInputStream downloadRawLog(String name);
+=======
+			String targetnameValSeparator, String targetnulVal);			
+	/**
+	 * 分页查询
+	 * @param pageNum	当前页数
+	 * @param pageSize	页面条数
+	 * @return
+	 */
+	public PageInfo<RawLog> listAll(int pageNum,int pageSize);
+>>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 	
 }

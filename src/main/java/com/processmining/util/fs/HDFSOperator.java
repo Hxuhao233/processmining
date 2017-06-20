@@ -53,15 +53,14 @@ public class HDFSOperator extends FSOperator{
     
     
     public String uploadFile(InputStream input,String hdfsPath) throws Exception{
-		
-    	String path = hdfsPath + UUID.randomUUID();
-		Path hdfsPath1 = new Path(path);
-		
+
+    	String hdfsId = String.valueOf(UUID.randomUUID());
+		Path finalPath = new Path(hdfsPath + hdfsId);
 	
-		FSDataOutputStream out = fs.create(hdfsPath1);
+		FSDataOutputStream out = fs.create(finalPath);
 		IOUtils.copyBytes(input, out,fs.getConf());
 
-		return path;
+		return hdfsId;
     }
     
     

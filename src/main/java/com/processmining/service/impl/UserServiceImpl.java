@@ -1,5 +1,6 @@
 package com.processmining.service.impl;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,14 @@ import com.processmining.entity.User;
 import com.processmining.service.IUserService;
 import com.processmining.util.Code;
 import com.processmining.util.EncodeUtil;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.processmining.dao.UserMapper;
+import com.processmining.entity.User;
+import com.processmining.service.IUserService;
+
 
 /**
  * 用户管理业务层实现
@@ -20,7 +29,9 @@ import com.processmining.util.EncodeUtil;
  */
 
 @Service
+
 @Transactional
+
 public class UserServiceImpl implements IUserService{
 	
 	@Autowired
@@ -28,6 +39,7 @@ public class UserServiceImpl implements IUserService{
 	
 	@Override
 	public int register(User user) {
+
 		boolean isExistEmail=userDao.isExistEmail(user.getEmail());
 		boolean isExistNickname=userDao.isExistNickname(user.getNickname());
 		if(isExistEmail){
@@ -81,4 +93,9 @@ public class UserServiceImpl implements IUserService{
 	public User getUserByEmailAndPassword(User user) {
 		return userDao.selectByEmailAndPassword(user);
 	}
+		// TODO Auto-generated method stub
+		return userDao.insertSelective(user);
+	}
+
+
 }

@@ -1,75 +1,51 @@
 package com.processmining.entity;
 
-import java.util.Date;
 
-public class RawLog {
-    private Integer id;
-
-    private String name;
-
-    private String format;
-
-    private Date createtime;
-
-    private Integer creatorid;
-
-    private String hdfsid;
-
-    private Boolean isshared;
-
-    public Integer getId() {
-        return id;
+public class RawLog extends Log{
+    public RawLog(){
+    	super();
     }
+    
+    private int toNormLogId;
+    
+    private String toNormLogName;
+    
+    private int toEventLogId;
+    
+    private String toEventLogName;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public int getToNormLogId() {
+		return toNormLogId;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setToNormLogId(int toNormLogId) {
+		this.toNormLogId = toNormLogId;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getToNormLogName() {
+		return toNormLogName;
+	}
 
-    public String getFormat() {
-        return format;
-    }
+	public void setToNormLogName(String toNormLogName) {
+		this.toNormLogName = toNormLogName;
+	}
 
-    public void setFormat(String format) {
-        this.format = format == null ? null : format.trim();
-    }
+	public int getToEventLogId() {
+		return toEventLogId;
+	}
 
-    public Date getCreatetime() {
-        return createtime;
-    }
+	public void setToEventLogId(int toEventLogId) {
+		this.toEventLogId = toEventLogId;
+	}
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
+	public String getToEventLogName() {
+		return toEventLogName;
+	}
 
-    public Integer getCreatorid() {
-        return creatorid;
-    }
-
-    public void setCreatorid(Integer creatorid) {
-        this.creatorid = creatorid;
-    }
-
-    public String getHdfsid() {
-        return hdfsid;
-    }
-
-    public void setHdfsid(String hdfsid) {
-        this.hdfsid = hdfsid == null ? null : hdfsid.trim();
-    }
-
-    public Boolean getIsshared() {
-        return isshared;
-    }
-
-    public void setIsshared(Boolean isshared) {
-        this.isshared = isshared;
-    }
+	public void setToEventLogName(String toEventLogName) {
+		this.toEventLogName = toEventLogName;
+	}
+    
+    
+    
 }
