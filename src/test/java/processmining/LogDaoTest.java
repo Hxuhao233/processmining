@@ -1,9 +1,6 @@
 package processmining;
 
-<<<<<<< HEAD
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-=======
 import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,7 +10,7 @@ import com.github.pagehelper.PageInfo;
 import com.processmining.entity.RawLog;
 import com.processmining.service.IRawLogService;
 
->>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
+
 
 public class LogDaoTest {
 	public static void main(String[] args){

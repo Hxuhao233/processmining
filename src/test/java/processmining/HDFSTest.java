@@ -1,11 +1,5 @@
 package processmining;
 
-<<<<<<< HEAD
-import java.io.IOException;
-
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-=======
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,7 +8,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.processmining.entity.RawLog;
 import com.processmining.service.IRawLogService;
->>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 import com.processmining.util.fs.HDFSOperator;
 
 

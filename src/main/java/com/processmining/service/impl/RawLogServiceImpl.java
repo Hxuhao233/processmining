@@ -2,25 +2,17 @@ package com.processmining.service.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
-<<<<<<< HEAD
-import java.util.List;
-=======
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
->>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-import com.processmining.dao.NormLogMapper;
-import com.processmining.dao.RawLogMapper;
-import com.processmining.entity.RawLog;
-=======
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.processmining.dao.NormLogMapper;
@@ -34,7 +26,6 @@ import com.processmining.entity.NormLogToEventLog;
 import com.processmining.entity.RawLog;
 import com.processmining.entity.RawLogToNormLog;
 import com.processmining.entity.RawlogToEventLog;
->>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 import com.processmining.service.IRawLogService;
 import com.processmining.util.fs.HDFSOperator;
 /**
@@ -46,8 +37,7 @@ import com.processmining.util.fs.HDFSOperator;
 public class RawLogServiceImpl implements IRawLogService{
 	
 
-	@Autowired
-	private RawLogMapper  rawlogDao;
+
 
 	private static final String PATH_PREFIX = "/processmining/rawlog/";
 	

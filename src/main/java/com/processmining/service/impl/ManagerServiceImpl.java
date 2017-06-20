@@ -2,6 +2,16 @@ package com.processmining.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.processmining.dao.AlgoMapper;
+import com.processmining.dao.AlgoParamMapper;
+import com.processmining.dao.UserMapper;
+import com.processmining.entity.User;
+import com.processmining.service.IManagerService;
+import com.processmining.util.response.Code;
+
 
 /**
  * 绠＄悊鍛樺姛鑳戒笟鍔″疄鐜�
@@ -32,7 +42,7 @@ public class ManagerServiceImpl implements IManagerService {
 			return Code.SYSTEM_ERROR;
 		}else{
 			u.setBanned(true);
-			return userDao.updateByPrimaryKey(u)==1?Code.SUCCESS:Code.SYSTEM_ERROR;
+			return userDao.updateByPrimaryKey(u)==1?Code.SUCCEED:Code.SYSTEM_ERROR;
 		}
 
 	}
@@ -44,14 +54,14 @@ public class ManagerServiceImpl implements IManagerService {
 			return Code.SYSTEM_ERROR;
 		}else{
 			u.setBanned(false);
-			return userDao.updateByPrimaryKey(u)==1?Code.SUCCESS:Code.SYSTEM_ERROR;
+			return userDao.updateByPrimaryKey(u)==1?Code.SUCCEED:Code.SYSTEM_ERROR;
 		}
 
 	}
 
 	@Override
 	public int deleteUser(int userId) {
-		return userDao.deleteByPrimaryKey(userId)==1?Code.SUCCESS:Code.SYSTEM_ERROR;
+		return userDao.deleteByPrimaryKey(userId)==1?Code.SUCCEED:Code.SYSTEM_ERROR;
 	}
 
 	@Override

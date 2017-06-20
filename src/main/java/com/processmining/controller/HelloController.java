@@ -15,11 +15,7 @@ public class HelloController {
 	private HDFSOperator hdfsUtil;
 	
 	
-	@RequestMapping("index")
-	public String index(){
-		System.out.println("index");
-		return "index";
-	}
+
 	
 	
 	@ResponseBody

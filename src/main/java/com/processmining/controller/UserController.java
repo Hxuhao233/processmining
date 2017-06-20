@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.processmining.config.PMConfig;
 import com.processmining.entity.User;
 import com.processmining.service.IUserService;
-import com.processmining.util.Code;
+import com.processmining.util.response.Code;
 import com.processmining.util.EncodeUtil;
 import com.processmining.util.LoginData;
 import com.processmining.util.NicknameUtil;
@@ -44,7 +44,7 @@ public class UserController {
 				if(u.getBanned()){
 					loginData.setCode(Code.IS_BANED);
 				}else{//如果被封
-				    loginData.setCode(Code.SUCCESS);
+				    loginData.setCode(Code.SUCCEED);
 				    session.setAttribute("user",u);
 				}
 			}

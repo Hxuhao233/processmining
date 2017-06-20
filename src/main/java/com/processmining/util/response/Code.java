@@ -10,6 +10,9 @@ public interface Code {
 	// 成功
 	int SUCCEED = 200;
 	
+	//验证码错误
+	int WRONG_CHECKCODE=201;
+	
 	// 错误的邮箱或者密码
 	int WRONG_EMAIL_OR_PASSWORD = 300;
 	
@@ -33,4 +36,7 @@ public interface Code {
 	
 	// 未知错误
 	int UNKNOWN_FAULT = 500;
+	
+	// 系统错误
+	int SYSTEM_ERROR= -1;
 }

@@ -2,7 +2,6 @@ package com.processmining.entity;
 
 import javax.persistence.Transient;
 
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 

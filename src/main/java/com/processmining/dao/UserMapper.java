@@ -1,10 +1,8 @@
 package com.processmining.dao;
 
-<<<<<<< HEAD
+
 import java.util.List;
 
-=======
->>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 import com.processmining.entity.User;
 
 public interface UserMapper {

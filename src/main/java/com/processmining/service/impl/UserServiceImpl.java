@@ -11,9 +11,9 @@ import com.processmining.config.PMConfig;
 import com.processmining.dao.UserMapper;
 import com.processmining.entity.User;
 import com.processmining.service.IUserService;
-import com.processmining.util.Code;
 import com.processmining.util.EncodeUtil;
-=======
+import com.processmining.util.response.Code;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +51,7 @@ public class UserServiceImpl implements IUserService{
 			//user.setActivated(false);
 			String pwd=user.getPassword();
 			user.setPassword(EncodeUtil.string2MD5(pwd+PMConfig.SALT));
-			return userDao.insertSelective(user)==1?Code.SUCCESS:Code.SYSTEM_ERROR;
+			return userDao.insertSelective(user)==1?Code.SUCCEED:Code.SYSTEM_ERROR;
 		}
 	}
 
@@ -70,13 +70,13 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public int updatePassword(User user,String newPassword) {
 		user.setPassword(EncodeUtil.string2MD5(newPassword+PMConfig.SALT));
-		return userDao.updateByPrimaryKey(user)==1?Code.SUCCESS:Code.SYSTEM_ERROR;
+		return userDao.updateByPrimaryKey(user)==1?Code.SUCCEED:Code.SYSTEM_ERROR;
 	}
 
 	@Override
 	public int updateNickName(User user,String newNickname) {
 		user.setNickname(newNickname);
-		return userDao.updateByPrimaryKey(user)==1?Code.SUCCESS:Code.SYSTEM_ERROR;
+		return userDao.updateByPrimaryKey(user)==1?Code.SUCCEED:Code.SYSTEM_ERROR;
 	}
 
 	@Override
@@ -93,9 +93,7 @@ public class UserServiceImpl implements IUserService{
 	public User getUserByEmailAndPassword(User user) {
 		return userDao.selectByEmailAndPassword(user);
 	}
-		// TODO Auto-generated method stub
-		return userDao.insertSelective(user);
-	}
+		
 
 
 }

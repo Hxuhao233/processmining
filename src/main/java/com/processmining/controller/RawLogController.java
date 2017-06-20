@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-=======
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -27,20 +27,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
->>>>>>> 0f9d0d729dd590001da30d8de7cf2e04d5337cab
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-<<<<<<< HEAD
-import com.mysql.fabric.Response;
-import com.processmining.service.IRawLogService;
-import com.processmining.util.Code;
-import com.processmining.util.ResponseData;
-import com.processmining.util.fs.HDFSOperator;
-=======
+
 import com.github.pagehelper.PageInfo;
 import com.mysql.fabric.Response;
 import com.processmining.entity.Log;
